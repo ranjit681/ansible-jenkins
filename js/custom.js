@@ -1,20 +1,46 @@
-// nav menu style
-var nav = $("#navbarSupportedContent");
-var btn = $(".custom_menu-btn");
-btn.click
-btn.click(function (e) {
-
-    e.preventDefault();
-    nav.toggleClass("lg_nav-toggle");
-    document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
-});
-
-
-function getCurrentYear() {
-    var d = new Date();
-    var currentYear = d.getFullYear()
-
-    $("#displayDate").html(currentYear);
+// to get current year
+function getYear() {
+    var currentDate = new Date();
+    var currentYear = currentDate.getFullYear();
+    document.querySelector("#displayYear").innerHTML = currentYear;
 }
 
-getCurrentYear();
+getYear();
+
+// nice select
+$(document).ready(function () {
+    $('select').niceSelect();
+});
+
+// date picker
+$(function () {
+    $("#inputDate").datepicker({
+        autoclose: true,
+        todayHighlight: true
+    }).datepicker('update', new Date());
+});
+
+// owl carousel slider js
+$('.team_carousel').owlCarousel({
+    loop: true,
+    margin: 15,
+    dots: true,
+    autoplay: true,
+    navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1,
+            margin: 0
+        },
+        576: {
+            items: 2,
+        },
+        992: {
+            items: 3
+        }
+    }
+})
